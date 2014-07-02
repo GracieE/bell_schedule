@@ -1,12 +1,12 @@
-<h1>Bell_Schedule Students</h1>
+<h1>Bell_Schedule (All Sections)</h1>
 <table>
-<th>Name</th>
-<th>Period</th>
-<% @sections.each do |section| %>
-<tr>
-<td><%= section["data"]["name"] %></td>
-<td><%= section["data"]["period"] %></td>
-<td><%= link_to "Students", :action => :show, :id => section["data"]["id"] %>
-<tr>
+  <th>Name</th>
+  <th>Period</th>
+  <% @sections.each do |section| %>
+    <tr>
+      <td><%= section["data"]["name"] %></td>
+      <td><%= section["data"]["period"] %></td>
+      <td><%= link_to "Students", :action => :show, :id => section["data"]["id"] %>
+    <tr>
 <% end %>
 </table>
