@@ -31,13 +31,14 @@ class SessionsController < ApplicationController
     user = User.find_by_uid(@id) || User.create_with_omniauth(@id, @name)
     session[:user_id] = user.id
     
+    #API calls to obtain sections for student or teacher
     if @body['type'] == 'student'
       #API Call to student sections
-      student_sections
+      redirect_to student_path(user.id)
 
     elsif @body['type'] == 'teacher'
       #API Call to teacher sections
-      teacher_sections
+      redirect_to teacher_path(user.id)
     end
   end
 
@@ -67,35 +68,5 @@ private
     @body = JSON.parse(@response.body)
 
   end
-
-  def student_sections
-      uri = URI("https://api.clever.com/v1.1/students/#{@id}/sections")
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-      request = Net::HTTP::Get.new(uri.request_uri)
-      request.add_field 'Authorization', 'Bearer 2d24a8c82a8071721e1b0affdc3936362c5b41f1'
-
-      response = http.request(request)
-      @body = JSON.parse(response.body)
-      @sections = @body['data']
-  end
-
-  def teacher_sections
-      uri = URI("https://api.clever.com/v1.1/teachers/#{@id}/sections")
-
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-      request = Net::HTTP::Get.new(uri.request_uri)
-      request.add_field 'Authorization', 'Bearer 2d24a8c82a8071721e1b0affdc3936362c5b41f1'
-
-      response = http.request(request)
-      @body = JSON.parse(response.body)
-      @sections = @body['data']
-  end
-
 
 end

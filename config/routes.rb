@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  get 'students/index'
+  get 'welcome/index'
   get "/oauth" => "sessions#create"
   get "/signout" => "sessions#destroy", :as => :signout
+  get "/students/:id" => "students#show", as: 'student'
+  get "/teachers/:id" => "teachers#show", as: 'teacher'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

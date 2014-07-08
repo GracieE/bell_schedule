@@ -1,0 +1,12 @@
+<h1>Bell Schedule for: <%= current_user.name %> </h1>
+<table>
+  <th>Name</th>
+  <th>Period</th>
+  <% @sections.each do |section| %>
+    <tr>
+      <td><%= section["data"]["name"] %></td>
+      <td><%= section["data"]["period"] %></td>
+    <tr>
+<% end %>
+</table>
+
