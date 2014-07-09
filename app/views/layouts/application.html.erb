@@ -11,7 +11,7 @@
   Welcome <%= current_user.name %>!
   <%= link_to "Sign Out", signout_path %>
 <% else %>
-    <%= link_to "Sign in with Clever", "https://clever.com/oauth/authorize?response_type=code&redirect_uri=http://localhost:3000/oauth&client_id=1da85a8592e00bdb1240&scope=read%3Auser&district_id=52c5e88553a943970d001718"%>
+    <%= link_to "Sign in with Clever", "https://clever.com/oauth/authorize?response_type=code&redirect_uri=http://secret-journey-5607.herokuapp.com/oauth&client_id=1da85a8592e00bdb1240&scope=read%3Auser&district_id=52c5e88553a943970d001718"%>
 <% end %>
 
 <%= yield %>

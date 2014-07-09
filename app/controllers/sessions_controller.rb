@@ -62,7 +62,7 @@ private
 
     request = Net::HTTP::Post.new(uri.request_uri, initheader = {'Content-Type' =>'application/json'})
     request.basic_auth('1da85a8592e00bdb1240', 'ca5cadf1b610e4c37cb838279c9a3bdb3c8bf1cc')
-    request.body = {'code' => code, 'grant_type' => 'authorization_code', 'redirect_uri' => 'http://localhost:3000/oauth'}.to_json
+    request.body = {'code' => code, 'grant_type' => 'authorization_code', 'redirect_uri' => 'http://secret-journey-5607.herokuapp.com/oauth'}.to_json
     
     @response = http.request(request)
     @body = JSON.parse(@response.body)
